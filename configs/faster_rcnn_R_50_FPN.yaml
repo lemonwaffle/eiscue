@@ -17,8 +17,8 @@ SOLVER:
   STEPS: (30000, 40000)
   MAX_ITER: 45000
 INPUT:
-  # MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
-  MIN_SIZE_TRAIN: (480, 504, 528, 552, 576, 600)
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  # MIN_SIZE_TRAIN: (480, 504, 528, 552, 576, 600)
 TEST:
   # The period (in terms of steps) to evaluate the model during training.
   # Set to 0 to disable.
