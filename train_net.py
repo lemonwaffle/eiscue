@@ -75,7 +75,8 @@ def setup(args):
     cfg.merge_from_file(args.config_file)
 
     # Set output directory
-    cfg.OUTPUT_DIR = f"output/{args.exp_name}"
+    output_dir = cfg.OUTPUT_DIR
+    cfg.OUTPUT_DIR = f"{output_dir}/{args.exp_name}"
     # Create directory if does not exist
     Path(cfg.OUTPUT_DIR).mkdir(exist_ok=True)
 
