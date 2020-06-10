@@ -74,16 +74,15 @@ def setup(args):
     cfg = get_cfg()
     cfg.merge_from_file(args.config_file)
 
-    # Set output directory
-    output_dir = cfg.OUTPUT_DIR
-    cfg.OUTPUT_DIR = f"{output_dir}/{args.exp_name}"
-    # Create directory if does not exist
-    Path(cfg.OUTPUT_DIR).mkdir(exist_ok=True)
-
     # Can create custom configs fields here too
     cfg.merge_from_list(args.opts)
     cfg.freeze()
     default_setup(cfg, args)
+
+    # Set output directory
+    cfg.OUTPUT_DIR = f"{cfg.OUTPUT_DIR}/{args.exp_name}"
+    # Create directory if does not exist
+    Path(cfg.OUTPUT_DIR).mkdir(exist_ok=True)
 
     return cfg
 
