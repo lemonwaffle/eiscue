@@ -1,0 +1,28 @@
+_BASE_: "./bases/Base-RCNN-FPN.yaml"
+MODEL:
+  # COCO weights
+  WEIGHTS: "https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl"
+  MASK_ON: False
+  RESNETS:
+    DEPTH: 50
+  ROI_HEADS:
+    NUM_CLASSES: 5
+    BATCH_SIZE_PER_IMAGE: 512 # Reduce this? Default 512
+DATASETS:
+  TRAIN: ("fashion_od_train",)
+  TEST: ("fashion_od_val",)
+SOLVER:
+  IMS_PER_BATCH: 16 # Reduce this? Default 16
+  BASE_LR: 0.02
+  STEPS: (30000, 40000)
+  MAX_ITER: 45000
+INPUT:
+  # MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MIN_SIZE_TRAIN: (480, 504, 528, 552, 576, 600)
+TEST:
+  # The period (in terms of steps) to evaluate the model during training.
+  # Set to 0 to disable.
+  EVAL_PERIOD: 2500
+  AUG:
+    ENABLED: False
+OUTPUT_DIR: "output"
