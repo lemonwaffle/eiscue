@@ -9,13 +9,13 @@ MODEL:
     NUM_CLASSES: 5
     BATCH_SIZE_PER_IMAGE: 512 # Reduce this? Default 512
   BACKBONE:
-    FREEZE_AT: 5 # Default 2
+    FREEZE_AT: 2 # Default 2
 DATASETS:
   TRAIN: ("fashion_od_train",)
   TEST: ("fashion_od_val",)
-DATALOADER:
-  SAMPLER_TRAIN: "RepeatFactorTrainingSampler"
-  REPEAT_THRESHOLD: 0.2
+# DATALOADER:
+#   SAMPLER_TRAIN: "RepeatFactorTrainingSampler"
+#   REPEAT_THRESHOLD: 0.2
 SOLVER:
   IMS_PER_BATCH: 16 # Reduce this? Default 16
   BASE_LR: 0.001
