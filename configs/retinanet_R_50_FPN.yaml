@@ -7,10 +7,12 @@ MODEL:
   RETINANET:
     NUM_CLASSES: 5
   BACKBONE:
-    FREEZE_AT: 2 # Default 2
+    FREEZE_AT: 5 # Default 2
 DATASETS:
   TRAIN: ("fashion_od_train",)
   TEST: ("fashion_od_val",)
+# DATALOADER:
+#   NUM_WORKERS: 1
 SOLVER:
   IMS_PER_BATCH: 16 # Reduce this? Default 16
   BASE_LR: 0.001 # Note that RetinaNet uses a different default learning rate
