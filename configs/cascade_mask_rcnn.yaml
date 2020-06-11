@@ -17,7 +17,7 @@ DATASETS:
   TEST: ("fashion_od_val",)
 SOLVER:
   IMS_PER_BATCH: 12 # Reduce this? Default 16
-  BASE_LR: 0.003
+  BASE_LR: 0.002
   STEPS: (6000, 8000)
   MAX_ITER: 9000 # 500 steps / epoch
   CHECKPOINT_PERIOD: 1000

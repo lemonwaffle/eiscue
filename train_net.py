@@ -113,7 +113,8 @@ def main(args):
         resume=args.resume,
         # dir=cfg.OUTPUT_DIR,
     )
-    # wandb.save(os.path.join(cfg.OUTPUT_DIR, ))
+    # Auto upload any checkpoints to wandb as they are written
+    wandb.save(os.path.join(cfg.OUTPUT_DIR, "*.pth"))
 
     # TODO: Visualize and log training examples and annotations
     # training_imgs = viz_data(cfg)
