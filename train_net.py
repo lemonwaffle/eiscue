@@ -111,7 +111,9 @@ def main(args):
         sync_tensorboard=True,
         config=config,
         resume=args.resume,
+        # dir=cfg.OUTPUT_DIR,
     )
+    # wandb.save(os.path.join(cfg.OUTPUT_DIR, ))
 
     # TODO: Visualize and log training examples and annotations
     # training_imgs = viz_data(cfg)
