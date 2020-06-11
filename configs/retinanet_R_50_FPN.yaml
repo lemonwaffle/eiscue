@@ -20,6 +20,7 @@ SOLVER:
   # MAX_ITER: 90000 # 500 steps / epoch
   STEPS: (6000, 9000)
   MAX_ITER: 10000 # 500 steps / epoch
+  CHECKPOINT_PERIOD: 1000
 TEST:
   # The period (in terms of steps) to evaluate the model during training.
   # Set to 0 to disable.
