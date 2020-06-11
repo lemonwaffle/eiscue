@@ -17,7 +17,7 @@ DATALOADER:
   SAMPLER_TRAIN: "RepeatFactorTrainingSampler"
   REPEAT_THRESHOLD: 0.2
 SOLVER:
-  IMS_PER_BATCH: 16 # Reduce this? Default 16
+  IMS_PER_BATCH: 12 # Reduce this? Default 16
   BASE_LR: 0.003
   STEPS: (6000, 8000)
   MAX_ITER: 9000 # 500 steps / epoch
