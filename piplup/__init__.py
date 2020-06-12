@@ -1,1 +1,1 @@
-from . import dataset  # just to register data
+from . import datasets  # just to register data

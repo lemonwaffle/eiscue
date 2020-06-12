@@ -1,0 +1,48 @@
+_BASE_: "./bases/Base-RCNN-FPN.yaml"
+MODEL:
+  WEIGHTS: "https://hangzh.s3.amazonaws.com/detectron/faster_cascade_rcnn_ResNeSt_50_FPN_syncbn_range-scale-1x-e9955232.pth"
+  MASK_ON: False
+  RESNETS:
+    DEPTH: 50
+    STRIDE_IN_1X1: False
+    RADIX: 2
+    # NORM: "SyncBN"
+  # FPN:
+  # NORM: "SyncBN"
+  ROI_HEADS:
+    NUM_CLASSES: 5
+    NAME: CascadeROIHeads
+    BATCH_SIZE_PER_IMAGE: 512 # Reduce this? Default 512
+  ROI_BOX_HEAD:
+    NAME: "FastRCNNConvFCHead"
+    NUM_CONV: 4
+    NUM_FC: 1
+    # NORM: "SyncBN"
+    CLS_AGNOSTIC_BBOX_REG: True
+  RPN:
+    POST_NMS_TOPK_TRAIN: 2000
+  PIXEL_MEAN: [123.68, 116.779, 103.939]
+  PIXEL_STD: [58.393, 57.12, 57.375]
+DATASETS:
+  TRAIN: ("fashion_od_train",)
+  TEST: ("fashion_od_val",)
+SOLVER:
+  IMS_PER_BATCH: 12
+  BASE_LR: 0.0015
+  STEPS: (6000, 8000)
+  MAX_ITER: 9000 # 500 steps / epoch
+  CHECKPOINT_PERIOD: 1000
+INPUT:
+  MIN_SIZE_TRAIN: (640, 800)
+  MIN_SIZE_TRAIN_SAMPLING: "range"
+  MAX_SIZE_TRAIN: 1333
+  FORMAT: "RGB"
+TEST:
+  PRECISE_BN:
+    ENABLED: True
+  # The period (in terms of steps) to evaluate the model during training.
+  # Set to 0 to disable.
+  EVAL_PERIOD: 1000
+  AUG:
+    ENABLED: True
+OUTPUT_DIR: "output"
