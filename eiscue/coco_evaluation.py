@@ -22,7 +22,7 @@ from detectron2.data.datasets.coco import convert_to_coco_json
 from detectron2.structures import Boxes, BoxMode, pairwise_iou
 from detectron2.utils.logger import create_small_table
 
-from .evaluator import DatasetEvaluator
+from detectron2.evaluation import DatasetEvaluator
 
 
 class COCOEvaluator(DatasetEvaluator):
