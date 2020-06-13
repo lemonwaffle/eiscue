@@ -19,6 +19,7 @@ from pathlib import Path
 from typing import Any, Dict
 
 import detectron2.utils.comm as comm
+import wandb
 import yaml
 from detectron2.checkpoint import DetectionCheckpointer
 from detectron2.config import get_cfg
@@ -103,6 +104,18 @@ def main(args):
     # Load cfg as python dict
     config = load_yaml(args.config_file)
 
+    # Setup wandb
+    wandb.init(
+        project="piplup-od",
+        name=args.exp_name,
+        sync_tensorboard=True,
+        config=config,
+        resume=args.resume,
+        # dir=cfg.OUTPUT_DIR,
+    )
+    # Auto upload any checkpoints to wandb as they are written
+    wandb.save(os.path.join(cfg.OUTPUT_DIR, "*.pth"))
+
     # TODO: Visualize and log training examples and annotations
     # training_imgs = viz_data(cfg)
     # wandb.log({"training_examples": training_imgs})
@@ -135,6 +148,8 @@ def main(args):
         res = trainer.train()
 
     # TODO: Visualize and log predictions and groundtruth annotations
+    pred_imgs = viz_preds(cfg)
+    wandb.log({"prediction_examples": pred_imgs})
 
     return res
 

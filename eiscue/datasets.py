@@ -10,10 +10,10 @@ from detectron2.data.datasets import register_coco_instances
 # data_dir = Path("data")
 # til_dir = data_dir / "til_2020"
 
-# train_coco_path = til_dir / "train_clean.json"
+# train_coco_path = Path("assets") / "train_clean.json"
 # train_imgs_dir = til_dir / "train" / "train"
 
-# val_coco_path = til_dir / "val_clean.json"
+# val_coco_path = Path("assets") / "val_clean.json"
 # val_imgs_dir = til_dir / "val" / "val"
 
 # Kaggle paths
