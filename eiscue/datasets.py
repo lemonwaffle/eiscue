@@ -30,5 +30,7 @@ val_imgs_dir = data_dir / "val" / "val"
 register_coco_instances("fashion_od_train", {}, train_coco_path, train_imgs_dir)
 register_coco_instances("fashion_od_val", {}, val_coco_path, val_imgs_dir)
 
+# Register TIL2020 eval sets
+
 # Define any metadata if required
 # metadata = MetadataCatalog.get("deepfashion_train")
