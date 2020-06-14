@@ -1,19 +1,29 @@
 #!/usr/bin/env python
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 import argparse
-import numpy as np
 import os
 from itertools import chain
-import cv2
-import tqdm
-from PIL import Image
+from pathlib import Path
 
+import cv2
+import numpy as np
+import tqdm
 from detectron2.config import get_cfg
-from detectron2.data import DatasetCatalog, MetadataCatalog, build_detection_train_loader
+from detectron2.data import (DatasetCatalog, MetadataCatalog,
+                             build_detection_train_loader)
 from detectron2.data import detection_utils as utils
 from detectron2.data.build import filter_images_with_few_keypoints
+from detectron2.data.datasets import register_coco_instances
 from detectron2.utils.logger import setup_logger
 from detectron2.utils.visualizer import Visualizer
+from PIL import Image
+
+# Define dataset paths
+data_dir = Path("data")
+til_dir = data_dir / "til_2020"
+
+val_coco_path = Path("assets") / "val_clean.json"
+val_imgs_dir = til_dir / "val" / "val"
 
 
 def setup(args):
@@ -88,6 +98,9 @@ if __name__ == "__main__":
                 )
                 output(vis, str(per_image["image_id"]) + ".jpg")
     else:
+        # Register dataset
+        register_coco_instances("fashion_od_val", {}, val_coco_path, val_imgs_dir)
+
         dicts = list(chain.from_iterable([DatasetCatalog.get(k) for k in cfg.DATASETS.TRAIN]))
         if cfg.MODEL.KEYPOINT_ON:
             dicts = filter_images_with_few_keypoints(dicts, 1)
