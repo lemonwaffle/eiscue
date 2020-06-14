@@ -106,11 +106,14 @@ def main(args):
 
     # Setup wandb
     wandb.init(
+        # Use exp name to resume run later on
+        id=args.exp_name,
         project="piplup-od",
         name=args.exp_name,
         sync_tensorboard=True,
         config=config,
-        resume=args.resume,
+        # Resume making use of the same exp name
+        resume=args.exp_name if args.resume else False,
         # dir=cfg.OUTPUT_DIR,
     )
     # Auto upload any checkpoints to wandb as they are written
