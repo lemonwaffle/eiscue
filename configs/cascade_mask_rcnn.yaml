@@ -3,11 +3,11 @@ MODEL:
   WEIGHTS: "https://dl.fbaipublicfiles.com/detectron2/Misc/cascade_mask_rcnn_R_50_FPN_3x/144998488/model_final_480dd8.pkl"
   MASK_ON: False
   RESNETS:
-    DEPTH: 101
+    DEPTH: 50
   ROI_HEADS:
     NUM_CLASSES: 5
     NAME: CascadeROIHeads
-    BATCH_SIZE_PER_IMAGE: 512 # Reduce this? Default 512
+    BATCH_SIZE_PER_IMAGE: 256 # Reduce this? Default 512
   ROI_BOX_HEAD:
     CLS_AGNOSTIC_BBOX_REG: True
   RPN:
@@ -18,8 +18,8 @@ DATASETS:
 SOLVER:
   IMS_PER_BATCH: 12 # Reduce this? Default 16
   BASE_LR: 0.0015
-  # STEPS: (6000, 8000)
-  MAX_ITER: 9000 # 500 steps / epoch
+  STEPS: (12000, 16000)
+  MAX_ITER: 18000 # 500 steps / epoch
   CHECKPOINT_PERIOD: 1000
 TEST:
   # The period (in terms of steps) to evaluate the model during training.
