@@ -4,4 +4,4 @@
 
 # CUDA_VISIBLE_DEVICES=0 python train_net_wandb.py --config-file configs/cascade_mask_rcnn.yaml --exp-name cascade_101
 
-CUDA_VISIBLE_DEVICES=0 python train_net_wandb.py --config-file configs/faster_rcnn.yaml --exp-name rcnn_lr_101
+CUDA_VISIBLE_DEVICES=0 python train_net_wandb.py --config-file configs/cascade_mask_rcnn.yaml --exp-name cascade_df
