@@ -77,7 +77,7 @@ def setup(args):
     cfg.merge_from_list(args.opts)
 
     # Set output directory
-    cfg.OUTPUT_DIR = f"{cfg.OUTPUT_DIR}/{args.exp_name}"
+    # cfg.OUTPUT_DIR = f"{cfg.OUTPUT_DIR}/{args.exp_name}"
     # Create directory if does not exist
     Path(cfg.OUTPUT_DIR).mkdir(exist_ok=True)
 
@@ -143,9 +143,9 @@ if __name__ == "__main__":
     # Create a parser with some common arguments
     parser = default_argument_parser()
     # Allow user to specify experiment name
-    parser.add_argument(
-        "--exp-name", help="name of experiment (for output dir and logging)"
-    )
+    # parser.add_argument(
+    #     "--exp-name", help="name of experiment (for output dir and logging)"
+    # )
 
     args = parser.parse_args()
 

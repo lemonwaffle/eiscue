@@ -77,8 +77,9 @@ def setup(args):
     # Can create custom configs fields here too
     cfg.merge_from_list(args.opts)
 
+    # FIXME: Mutating the config is stupid; maybe just change from cmd line instead
     # Set output directory
-    cfg.OUTPUT_DIR = f"{cfg.OUTPUT_DIR}/{args.exp_name}"
+    # cfg.OUTPUT_DIR = f"{cfg.OUTPUT_DIR}/{args.exp_name}"
     # Create directory if does not exist
     Path(cfg.OUTPUT_DIR).mkdir(exist_ok=True)
 
@@ -107,8 +108,10 @@ def main(args):
     # Setup wandb
     wandb.init(
         # Use exp name to resume run later on
+        # id="cascade_df_resume",
         id=args.exp_name,
         project="piplup-od",
+        # name="cascade_df_resume",
         name=args.exp_name,
         sync_tensorboard=True,
         config=config,
@@ -161,8 +164,10 @@ if __name__ == "__main__":
     # Create a parser with some common arguments
     parser = default_argument_parser()
     # Allow user to specify experiment name
+    # Responsible for specify name of exp in wandb,
+    # as well as unique id for resuming in wandb
     parser.add_argument(
-        "--exp-name", help="name of experiment (for output dir and logging)"
+        "--exp-name", default='', help="name of experiment (for output dir and logging)"
     )
 
     args = parser.parse_args()

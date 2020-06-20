@@ -21,6 +21,12 @@ train_til_imgs_dir = til_dir / "train" / "train"
 val_til_coco_path = Path("assets") / "val_clean.json"
 val_til_imgs_dir = til_dir / "val" / "val"
 
+eval_til_coco_path = til_dir / "CV_interim_evaluation.json"
+eval_til_imgs_dir = til_dir / "CV_interim_images"
+
+final_til_coco_path = til_dir / "CV_final_evaluation.json"
+final_til_imgs_dir = til_dir / "CV_final_images"
+
 # DeepFashion
 train_df_coco_path = deepfashion_train_dir/'train_til_coco.json'
 train_df_imgs_dir = deepfashion_train_dir/'image'
@@ -47,3 +53,7 @@ register_coco_instances("deepfashion_train", {}, train_df_coco_path, train_df_im
 register_coco_instances("deepfashion_val", {}, val_df_coco_path, val_df_imgs_dir)
 
 # Register TIL2020 eval sets
+register_coco_instances("fashion_od_eval", {}, eval_til_coco_path, eval_til_imgs_dir)
+
+# Register TIL2020 final sets
+register_coco_instances("fashion_od_final", {}, final_til_coco_path, final_til_imgs_dir)
