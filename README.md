@@ -61,7 +61,7 @@ This command only runs evaluation on the test dataset:
 ```
 python train_net.py \
     --eval-only \
-    --config-file configs/cascade_mask_rcnn.yaml \
-    MODEL.WEIGHTS /path/to/checkpoint_file  # Path to trained checkpoint \
+    --config-file configs/cascade_mask_rcnn.yaml \  # Config file of trained model
+    MODEL.WEIGHTS /path/to/checkpoint_file \  # Path to trained checkpoint
     OUTPUT_DIR output/eval  # Specify output directory to save results, predictions etc.
 ```
