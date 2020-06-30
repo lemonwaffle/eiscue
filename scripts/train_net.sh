@@ -48,8 +48,15 @@
 #     OUTPUT_DIR output/eval/cascade_lr
 
 # Resume
-python train_net_wandb.py \
-    --config-file output/cascade_df_ft_lr/config.yaml \
-    --exp-name cascade_df_ft_lr \
-    --resume \
-    OUTPUT_DIR output/cascade_df_ft_lr
+# python train_net_wandb.py \
+#     --config-file output/cascade_df_ft_lr/config.yaml \
+#     --exp-name cascade_df_ft_lr \
+#     --resume \
+#     OUTPUT_DIR output/cascade_df_ft_lr
+
+# Deploy
+python caffe2_converter.py --config-file output/cascade_lr/config.yaml \
+	--output ./caffe2_model --run-eval \
+    TEST.AUG.ENABLED False \
+	MODEL.WEIGHTS output/cascade_lr/model_0007999.pth \
+	MODEL.DEVICE cpu
