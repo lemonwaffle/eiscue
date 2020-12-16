@@ -1,5 +1,6 @@
 # Eiscue - Object Detection for DSTA TIL 2020
 Submission for the [DSTA TIL 2020](https://www.dsta.gov.sg/til) AI Competition. 
+
 Object detection of Fashion Images using the [Detectron2](https://github.com/facebookresearch/detectron2) framework.
 
 # Datasets
